@@ -14,7 +14,7 @@
             <div class="form-group">
                 <select v-model="categoria_id" class="form-control custom-select">
                     <option value="">Seleccionar categoria de la tara</option>
-                    <option v-for="(categoria, index) in categorias" :key="index">
+                    <option v-for="(categoria, index) in categorias" :key="index" :value="categoria.id">
                         {{categoria.descripcion}}
                     </option>
                 </select>
@@ -31,7 +31,7 @@
 <script>
 
 import axios from 'axios';
-import { responseAxios } from './../helper'
+import { responseAxios, loaderIn, loaderOut } from './../helper'
 
 export default {
     data(){
@@ -60,14 +60,19 @@ export default {
             data.append('nombre', this.nombre);
             data.append('categoria_id', this.categoria_id);
 
-
+            loaderIn()
             axios.post('/api/tareas', data)
                 .then((response) => {
                     console.log(response);
                     responseAxios(response)
+                    this.$emit('tareaCreada');
+                    this.nombre = '';
+                    this.categoria_id = '';
                 }).catch(({response}) => {
                     responseAxios(response)
                     console.log(response);
+                }).then(() => {
+                    loaderOut();
                 })
         }
     }   

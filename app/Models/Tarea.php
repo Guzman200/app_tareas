@@ -11,4 +11,11 @@ class Tarea extends Model
 
     protected $table = "tareas";
     protected $guarded = [];
+
+    /** Relaciones */
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'categoria_id', 'id');
+    }
 }

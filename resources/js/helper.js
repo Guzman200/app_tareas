@@ -1,18 +1,18 @@
-//import $ from "jquery";
+import $ from "jquery";
 import Swal from "sweetalert2";
 const moment = require("moment");
 moment.locale("es");  
 
 // seccion de loader
-//const loader = $("#loader");
+const loader = $("#loader");
 
-/*const loaderIn = () => {
+const loaderIn = () => {
     loader.css("display", "flex");
 };
 
 const loaderOut = () => {
     loader.fadeOut();
-}; */
+}; 
 
 // manejo de errores del servidor mediante ajax
 
@@ -157,8 +157,8 @@ const sweetDelete = (title, html, callback, icon = "warning", confirmButtonText 
 
 // exportacion de funciones
 export {
-    //loaderIn,
-    //loaderOut,
+    loaderIn,
+    loaderOut,
     responseAxios,
     sweetInfo,
     sweetDelete,
