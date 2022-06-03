@@ -86,6 +86,7 @@ export default {
                         remember : this.mantener_sesion_abierta,
                         token_recapchat : this.token_recapchat
                     }).then( (response) => {
+                        localStorage.setItem('nombre', response.data.nombre)
                         window.location.href = '/';
                     }).catch( ({response}) => {
 

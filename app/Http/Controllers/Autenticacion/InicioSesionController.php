@@ -42,7 +42,7 @@ class InicioSesionController extends Controller
 
                 Event::dispatch(new UserLogin($user));
     
-                return response()->json([],200);
+                return response()->json($user,200);
             }
 
             return response()->json(['mensaje' => 'Usuario o contraseña incorrectos'],422);

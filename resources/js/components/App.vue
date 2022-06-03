@@ -34,6 +34,17 @@
         </nav>
 
         <div class="container-fluid mt-4">
+
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            Hola {{nombre()}} es hora de administrar tus tareas!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <router-view></router-view>
         </div>
     </div>
@@ -52,6 +63,9 @@ export default {
                     window.location.href = "/";
                 });
         },
+        nombre(){
+            return localStorage.getItem('nombre');
+        }
     },
 };
 </script>
