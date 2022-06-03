@@ -17,10 +17,12 @@ class CreateTareasTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->unsignedBigInteger('categoria_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('realizada')->default(0);
             $table->timestamps();
 
             $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

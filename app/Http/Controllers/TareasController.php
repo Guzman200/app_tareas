@@ -11,14 +11,18 @@ class TareasController extends Controller
     
     public function index()
     {
-        $tareas = Tarea::with('categoria')->get();
+        $tareas = Tarea::with('categoria')->where('user_id', auth()->user()->id)->get();
 
         return response()->json($tareas);
     }
 
     public function store(StoreRequest $request)
     {
-        Tarea::create($request->all());
+
+        $data = $request->all();
+        $data['user_id'] = auth()->user()->id;
+
+        Tarea::create($data);
 
         return response()->json(['title' => 'Tarea creada exitosamente']);
     }
