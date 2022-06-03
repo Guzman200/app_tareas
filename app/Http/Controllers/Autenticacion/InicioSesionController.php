@@ -6,12 +6,14 @@ use App\Events\UserLogin;
 use App\Events\UserLogout;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\autenticacion\LoginRequest;
+use App\Http\Requests\User\RegisterRequest;
 use App\Models\User;
 use App\Services\HelperService;
 use App\Services\SuspencionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Hash;
 
 class InicioSesionController extends Controller
 {
@@ -60,5 +62,17 @@ class InicioSesionController extends Controller
         $request->session()->regenerateToken();
 
         return response()->json([],200);
+    }
+
+    public function register(RegisterRequest $request)
+    {
+
+        User::create([
+            'nombre' => $request->nombre,
+            'password' => Hash::make($request->password),
+            'username' => $request->username
+        ]);
+
+        return response()->json(['title' => 'Usuario registrado correctamente']);
     }
 }

@@ -46,7 +46,7 @@
                         </form>	
                         <div class="text-center">
                             <p class="mt-15 mb-0">
-                                <a href="javascript:void(0)" class="hover-warning"><i class="ion ion-locked"></i> ¿No tienes cuenta? Registrarse</a><br>
+                                <router-link to="/registro" class="hover-warning"><i class="ion ion-locked"></i> ¿No tienes cuenta? Registrarse</router-link><br>
                             </p>
                         </div>	
                     </div>						
